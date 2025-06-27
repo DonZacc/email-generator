@@ -3,7 +3,6 @@ import requests
 
 # Access secrets safely
 apikey = st.secrets["api-key"]
-endpoint = st.secrets["end-point"]
 deployment_name = st.secrets["dep-name"]
 
 st.header("Email Generator App")
