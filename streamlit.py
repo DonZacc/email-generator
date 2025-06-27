@@ -29,10 +29,11 @@ if st.session_state.processing and prompt:
         
         headers = {
             "Content-Type": "application/json",
-            "api-key": apikey
+            "Authorization": f"Bearer {apikey}"
         }
 
         payload = {
+            "model": deployment_name,  # "gpt-4o" or "gpt-3.5-turbo"
             "messages": [
                 {"role": "system", "content": "You are an assistant that generates emails."},
                 {"role": "user", "content": prompt}
