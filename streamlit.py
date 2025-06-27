@@ -25,7 +25,7 @@ if st.button("Generate Email", disabled=st.session_state.processing):
 # If processing is True
 if st.session_state.processing and prompt:
     with st.spinner("Generating email..."):
-        url = f"{endpoint}/openai/deployments/{deployment_name}/chat/completions?api-version=2024-12-01-preview"
+        url = "https://api.openai.com/v1/chat/completions"
         
         headers = {
             "Content-Type": "application/json",
