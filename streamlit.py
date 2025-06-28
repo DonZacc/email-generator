@@ -25,20 +25,19 @@ if st.button("Generate Email", disabled=st.session_state.processing):
 # If processing is True
 if st.session_state.processing and prompt:
     with st.spinner("Generating email..."):
-        url = "https://api.openai.com/v1/chat/completions"
+        url = f"https://api-inference.huggingface.co/models/{deployment_name}"
         
         headers = {
-            "Content-Type": "application/json",
             "Authorization": f"Bearer {apikey}"
         }
 
-        payload = {
-            "model": deployment_name,  # "gpt-4o" or "gpt-3.5-turbo"
-            "messages": [
-                {"role": "system", "content": "You are an assistant that generates emails."},
-                {"role": "user", "content": prompt}
-            ],
-            "max_tokens": 1000
+      payload = {
+            "inputs": f"Write a professional email based on this: {prompt}",
+            "parameters": {
+                "temperature": 0.7,
+                "max_new_tokens": 300,
+                "return_full_text": False
+            }0
         }
 
         response = requests.post(url, headers=headers, json=payload)
