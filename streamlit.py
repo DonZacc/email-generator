@@ -37,7 +37,7 @@ if st.session_state.processing and prompt:
                 "temperature": 0.7,
                 "max_new_tokens": 300,
                 "return_full_text": False
-            }0
+            }
         }
 
         response = requests.post(url, headers=headers, json=payload)
